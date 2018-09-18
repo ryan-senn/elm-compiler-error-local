@@ -1,22 +1,23 @@
 module Main exposing (main)
 
 import Browser
-import Toasters
+import MsgSscce
 
 
-main : Program () Model Msg
+main : Program () String Msg
 main =
-    Browser.element
-        { init = always ( "model", Cmd.none )
+    Browser.sandbox
+        { init = "model"
         , update = Debug.todo "update"
         , view = Debug.todo "view"
-        , subscriptions = always Sub.none
         }
 
 
-type alias Model =
-    String
+-- This works
+--type Msg
+--    = MsgSscceMsg MsgSscce.Msg
 
 
+-- This breaks
 type Msg
-    = ToastersMsg Toasters.InternalMsg
+    = MsgSscceMsg MsgSscce.InternalMsg
